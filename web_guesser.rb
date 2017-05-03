@@ -6,12 +6,16 @@ require 'sinatra/reloader' if development?
 def guess_message(guess)
 	if guess == 0
 		message = " "
+	elsif guess > @@number + 10
+		message = "way too high"
+	elsif guess < @@number - 10
+		message = "way too low"
 	elsif guess > @@number
 		message = "too high!"
 	elsif guess < @@number
 		message = "too low!"
 	elsif guess == @@number
-		message = "you guessed correctly!"
+		message = "you guessed correctly! The number is #{@@number}"
 	end
 end
 
